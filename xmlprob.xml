@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Payload StructureVersion="1" WholesalerID="XXXXXXXXXX">
+    <Period PeriodType="Date" DateTo="2019-05-13" DateFrom="2019-05-13" TotalRecordsCount="4" TotalVolume="219.00"> 
+        <Outlets>
+            <OutletEntry>
+			<DeliverTo>
+				<OutletNumber>12345</OutletNumber> 
+				<Name1>Outlet 1</Name1>
+				<Address1>Outlet 1 address</Address1>
+				<PostalCode>11000</PostalCode>
+				<City>Beograd</City>
+				<Telephone1/>
+				<Telephone2/>
+				<Fax/>
+				<Email/>
+				<VatNumber>111111111</VatNumber>
+			</DeliverTo> 
+		</OutletEntry>
+        </Outlets>
+        <Sales TransactionType="Sales">
+            <Transaction>
+                <OutletNumber>12345</OutletNumber> 
+                <DeliveryDate>2019-05-13</DeliveryDate> 
+                <InvoiceNumber>R-60079</InvoiceNumber>
+                <TransactionDetails>
+                    <ProductNumber>1603</ProductNumber> 
+                    <Quantity>1.00</Quantity> 
+                </TransactionDetails>
+                <TransactionDetails>
+                    <ProductNumber>53</ProductNumber> 
+                    <Quantity>168.00</Quantity> 
+                </TransactionDetails>
+                <TransactionDetails>
+                    <ProductNumber>221</ProductNumber> 
+                    <Quantity>24.00</Quantity> 
+                </TransactionDetails>
+                <TransactionDetails>
+                    <ProductNumber>1200</ProductNumber> 
+                    <Quantity>36.00</Quantity> 
+                </TransactionDetails>
+            </Transaction> 
+        </Sales>
+        <Products>
+            <ProductEntry>
+                <ProductNumber>53</ProductNumber> 
+                <ProductName>Coca cola 0,25</ProductName> 
+                <UnitOfQuantity>PC</UnitOfQuantity> 
+                <EanConsumerUnit>54490086</EanConsumerUnit> 
+            </ProductEntry>
+            <ProductEntry>
+                <ProductNumber>221</ProductNumber> 
+                <ProductName>Schweppes tonic 0,25</ProductName>
+                <UnitOfQuantity>PC</UnitOfQuantity> 
+                <EanConsumerUnit>40822341</EanConsumerUnit> 
+            </ProductEntry>
+            <ProductEntry>
+                <ProductNumber>1200</ProductNumber> 
+                <ProductName>Rosa negaz.0,75</ProductName> 
+                <UnitOfQuantity>PC</UnitOfQuantity> 
+                <EanConsumerUnit>5449000156471</EanConsumerUnit> 
+            </ProductEntry>
+            <ProductEntry>
+                <ProductNumber>1603</ProductNumber> 
+                <ProductName>Aperol 1/1</ProductName> 
+                <UnitOfQuantity>PC</UnitOfQuantity> 
+                <EanConsumerUnit>8002230350278</EanConsumerUnit>  
+            </ProductEntry>
+        </Products> 
+    </Period> 
+</Payload>
+

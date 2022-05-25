@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2006 sp1 U (http://www.altova.com) by XMLSPY 2006 Professional Ed., Installed for 2 users (Coca Cola Management) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Payload">
+        <xs:annotation>
+            <xs:documentation>Comment describing your root element</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Period" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Outlets" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+
+                                    </xs:sequence>
+                                    <xs:attribute name="Comments" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Sales" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Transaction" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="OutletNumber" type="NotNullString" nillable="false"/>
+                                                    <xs:element name="DeliveryDate" type="xs:date" nillable="false">
+                                                        <xs:annotation>
+                                                            <xs:documentation>OTIF only</xs:documentation>
+                                                        </xs:annotation>
+                                                    </xs:element>
+                                                    <xs:element name="OrderNumberHbc" minOccurs="0" type="xs:string" nillable="true">
+                                                        <xs:annotation>
+                                                            <xs:documentation>OTIF only</xs:documentation>
+                                                        </xs:annotation>
+                                                    </xs:element>
+                                                    <xs:element name="InvoiceNumber" minOccurs="0" type="xs:string" nillable="true"/>
+                                                    <xs:element name="TransactionDetails" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="ProductNumber" type="NotNullString" nillable="false"/>
+                                                                <xs:element name="Quantity" type="xs:decimal" nillable="false"/>
+                                                                <xs:element name="Price" minOccurs="0" type="NullOrDecimal" nillable="true"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute name="Comments" type="xs:string"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="CanceledTransaction" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="InvoiceNumber" type="NotNullString" nillable="false"/>
+                                                    <xs:element name="OutletNumber" type="NotNullString" nillable="false"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="TransactionType" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Sales"/>
+                                                <xs:enumeration value="OTIF"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Products" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ProductEntry" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="ProductNumber" type="NotNullString" nillable="false"/>
+                                                    <xs:element name="ProductName" type="NotNullString" nillable="false"/>
+                                                    <xs:element name="UnitOfQuantity" nillable="false">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="NotNullString">
+                                                                <xs:enumeration value="PC"/>
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="ArticleNameHbc" minOccurs="0" type="xs:string" nillable="true"/>
+                                                    <xs:element name="ArticleNumberHbc" minOccurs="0" type="xs:string" nillable="true"/>
+                                                    <xs:element name="EanConsumerUnit" type="NotNullString" nillable="false"/>
+                                                    <xs:element name="EanMultipack" minOccurs="0" type="xs:string" nillable="true"/>
+                                                    <xs:element name="EanTradeUnit" minOccurs="0" type="xs:string" nillable="true"/>
+                                                    <xs:element name="ProductRemarks" minOccurs="0" type="xs:string" nillable="true"/>
+                                                    <xs:element name="PurchasePrice" minOccurs="0" type="NullOrDecimal" nillable="true"/>
+                                                    <xs:element name="PackageSizeLitres" minOccurs="0" type="NullOrDecimal" nillable="true"/>
+                                                    <xs:element name="SalesUnit" minOccurs="0" type="xs:string" nillable="true"/>
+                                                    <xs:element name="PackageType" minOccurs="0" type="xs:string" nillable="true"/>
+                                                    <xs:element name="Subunits" minOccurs="0" type="xs:string" nillable="true"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="Comments" type="xs:string"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="PeriodType" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Date"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="DateFrom" type="xs:date" use="required"/>
+                        <xs:attribute name="DateTo" type="xs:date" use="optional"/>
+                        <xs:attribute name="TotalRecordsCount" type="xs:integer" use="required"/>
+                        <xs:attribute name="TotalVolume" type="xs:decimal" use="required"/>
+                        <xs:attribute name="PeriodNumber" type="xs:integer"/>
+                        <xs:attribute name="Comments" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="StructureVersion" type="NotNullString" use="required"/>
+            <xs:attribute name="Comments" type="xs:string"/>
+            <xs:attribute name="WholesalerID" type="NotNullString" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="OutletData">
+        <xs:sequence>
+            <xs:element name="OutletNumber" type="NotNullString" nillable="false"/>
+            <xs:element name="Name1" type="NotNullString" nillable="false"/>
+            <xs:element name="Name2" minOccurs="0" type="xs:string" nillable="true"/>
+            <xs:element name="ContactPerson" minOccurs="0" type="xs:string" nillable="true"/>
+            <xs:element name="Address1" type="xs:string" nillable="false"/>
+            <xs:element name="Address2" minOccurs="0" type="xs:string" nillable="true"/>
+            <xs:element name="PostalCode" type="NotNullString" nillable="false"/>
+            <xs:element name="City" type="NotNullString" nillable="false"/>
+            <xs:element name="Telephone1" minOccurs="0" type="xs:string" nillable="true"/>
+            <xs:element name="Telephone2" minOccurs="0" type="xs:string" nillable="true"/>
+            <xs:element name="Fax" minOccurs="0" type="xs:string" nillable="true"/>
+            <xs:element name="Email" minOccurs="0" type="xs:string" nillable="true"/>
+            <xs:element name="VatNumber" type="NotNullString" nillable="false"/>
+            <xs:element name="KeyAccount" minOccurs="0" type="xs:string" nillable="true"/>
+            <xs:element name="Channel" minOccurs="0" type="xs:string" nillable="true"/>
+            <xs:element name="OutletNumberHbc" minOccurs="0" type="xs:string" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="NotNullString">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EmptyString">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value=""/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NullOrDecimal">
+        <xs:union memberTypes="xs:decimal EmptyString"/>
+    </xs:simpleType>
+</xs:schema>
